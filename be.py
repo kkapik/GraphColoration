@@ -1,19 +1,25 @@
 ## Importation
 from noeud import *
+import time
 
 ##Initialisation
 colors = ['red','green','blue', 'orange', 'yellow']
 
 #Création des noeuds avec leur voisin
 node=[]
-for i in range(5):
+for i in range(10):
    node.append(Node())
 
-node[0].set_neighbours([1,3,4])
-node[1].set_neighbours([0,2])
-node[2].set_neighbours([1])
-node[3].set_neighbours([0,4])
-node[4].set_neighbours([0,3])
+node[0].set_neighbours([1,2,5,6,7])
+node[1].set_neighbours([0,5,6,8])
+node[2].set_neighbours([0])
+node[3].set_neighbours([4,7])
+node[4].set_neighbours([3])
+node[5].set_neighbours([0,1,9])
+node[6].set_neighbours([0,1])
+node[7].set_neighbours([0,3])
+node[8].set_neighbours([1,9])
+node[9].set_neighbours([5,8])
 
 
 ## fonction pour la terminaison
@@ -60,7 +66,7 @@ while not_finish():
     #On le marque comme traité
     treated.append(maxinode[0])
     print('Noeud ', maxinode[0], ' devient ', colors[c], '\n')
-
+    time.sleep(2)
 
 
 if __name__ == "__main__":
