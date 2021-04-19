@@ -1,10 +1,3 @@
-# Mars 2019
-# Crée une fenetre, un canevas, place le noeud de départ
-# Puis onclique pour placer les autres noeuds.
-# Possibilité d'effacer les noeuds en allanat en arrière.
-# Deux listes contiennent les noeuds et leurs coordonnées
-
-
 from tkinter import *
 from tkinter.messagebox import showinfo
 import random
@@ -30,8 +23,8 @@ class ZoneAffichage(Canvas):
     def get_dims(self):
         return (self.__w, self.__h)
 
-    def creer_noeud(self, x_centre, y_centre, rayon , col, fill_color="white"):
-        noeud=Balle(self, x_centre, y_centre, rayon , col, fill_color)
+    def creer_noeud(self, x_centre, y_centre, rayon , col, fill_color="white",n=0):
+        noeud=Balle(self, x_centre, y_centre, rayon , col, fill_color,n)
         self.pack()
         return noeud
 
@@ -42,13 +35,13 @@ class ZoneAffichage(Canvas):
         # Placer un noeud à l'endroit cliqué
         self.__fen_parent.placer_un_noeud(event.x, event.y)
 
-    def placer_un_noeud_sur_canevas(self, x_centre, y_centre, col=None, fill_color="white"):
+    def placer_un_noeud_sur_canevas(self, x_centre, y_centre, col=None, fill_color="white", n= 0):
         w,h = self.get_dims()
         rayon=10
         if col == None :
             col= random.choice(['green', 'blue', 'red', 'magenta', 'black', 'maroon', 'purple', 'navy', 'dark cyan'])
 
-        node=self.creer_noeud(x_centre, y_centre, rayon , col, fill_color)
+        node=self.creer_noeud(x_centre, y_centre, rayon , col, fill_color,n)
         self.update()
 
         self.__fen_parent.set_coordonnes_du_last_node(x_centre, y_centre)
@@ -84,7 +77,7 @@ class FenPrincipale(Tk):
         w,h = self.__zoneAffichage.get_dims()
         for i in range(len(self.__nodelist)):
             x_centre, y_centre = 250+175*cos((i*2*pi)/len(self.__nodelist)), 200+175*sin((i*2*pi)/len(self.__nodelist))
-            node= self.__zoneAffichage.placer_un_noeud_sur_canevas(x_centre, y_centre, col=self.__nodelist[i].get_color(), fill_color=self.__nodelist[i].get_color())
+            node= self.__zoneAffichage.placer_un_noeud_sur_canevas(x_centre, y_centre, col=self.__nodelist[i].get_color(), fill_color=self.__nodelist[i].get_color(), n=i)
             self.add_a_node_to_your_list(node)
             self.__liste_coordonnes_centre_des_nodes.append((x_centre, y_centre))
 
@@ -157,13 +150,14 @@ class FenPrincipale(Tk):
     #--------------------------
 #--------------------------
 class Balle:
-    def __init__(self, canvas, cx, cy, rayon, couleur, fill_color="white"):
+    def __init__(self, canvas, cx, cy, rayon, couleur, fill_color="white",n= 0):
         self.__cx, self.__cy = cx, cy
         self.__rayon = rayon
         self.__color = couleur
         self.__can = canvas  # Il le faut pour les déplacements
 
         self.__canid = self.__can.create_oval(cx - rayon, cy - rayon, cx + rayon, cy + rayon, outline=couleur, fill=fill_color)
+        self.__canid2 = self.__can.create_text(cx,cy, text = n)
         # Pour 3.6 : col: object  # essaie typage !
 
     def get_node_ident(self):
