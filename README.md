@@ -8,6 +8,6 @@ Fichier *be.py* -> Sans interface graphique tout est dans la console. Pas d'acti
 
 Fichier *graphic.py* -> Avec interface graphique. Appuyer sur Update pour passer au noeud suivant.
 
-Enhancement à faire: 
-	- Meilleur disposition sur l'interface graphique
+Enhancement à faire:<br>
+	- Meilleur disposition sur l'interface graphique <br>
 	- On ne colorie pas dans la couleur de base du noeud
