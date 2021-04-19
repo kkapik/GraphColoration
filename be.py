@@ -9,11 +9,11 @@ node=[]
 for i in range(5):
    node.append(Node())
 
-node[0].set_neighbours([4])
-node[1].set_neighbours([2,3])
-node[2].set_neighbours([1,4])
-node[3].set_neighbours([1,4])
-node[4].set_neighbours([0,2,3])
+node[0].set_neighbours([1,3,4])
+node[1].set_neighbours([0,2])
+node[2].set_neighbours([1])
+node[3].set_neighbours([0,4])
+node[4].set_neighbours([0,3])
 
 
 ## fonction pour la terminaison
@@ -47,14 +47,19 @@ while not_finish():
         m = node[i].get_maximum()
         if ((m[1]>= maxinode[2]) and not(i in treated)):
             maxinode = (i, m[0], m[1])
+    print(maxinode)
+    #On modifie sa couleur en choisissant une couleur différente de ses voisins
+    message = node[maxinode[0]].get_message()
+    c=0
+    print(message)
+    while message[c] != 0: #s'arrete à l'indice d'une couleur qu'aucun de ses voisins a
+        c+=1
     
-    #On modifie sa couleur
-    new_color = maxinode[1] + 1
-    node[maxinode[0]].set_color(colors[new_color])
+    node[maxinode[0]].set_color(colors[c])
     
     #On le marque comme traité
     treated.append(maxinode[0])
-    print('Noeud ', maxinode[0], ' devient ', colors[new_color])
+    print('Noeud ', maxinode[0], ' devient ', colors[c], '\n')
 
 
 
