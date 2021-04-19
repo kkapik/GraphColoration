@@ -58,20 +58,6 @@ while not_finish():
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 if __name__ == "__main__":
-    boo = not_finish()
-    print(boo)
-    for i in node:
-        print(i.get_color())
+    for i in range(len(node)):
+        print('Node ', i, ' is ',node[i].get_color())
