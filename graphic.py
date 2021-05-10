@@ -158,7 +158,6 @@ class Balle:
 
         self.__canid = self.__can.create_oval(cx - rayon, cy - rayon, cx + rayon, cy + rayon, outline=couleur, fill=fill_color)
         self.__canid2 = self.__can.create_text(cx,cy, text = n)
-        # Pour 3.6 : col: object  # essaie typage !
 
     def get_node_ident(self):
         return self.__canid
