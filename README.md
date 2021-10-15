@@ -1,10 +1,7 @@
-# BE_Saidi
+# Graph Coloration
 
-Projet BE avec Alexandre Saidi
 
-**Coloration de graphe**
+File *be.py* -> Without graphic interface, everything is print in the console. No user action required.
 
-Fichier *be.py* -> Sans interface graphique tout est dans la console. Pas d'action utilisateur.
-
-Fichier *graphic.py* -> Avec interface graphique. Appuyer sur Update pour passer au noeud suivant.
+File *graphic.py* -> With graphic interface. Click `Update` to go to next step.
 
