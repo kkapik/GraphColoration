@@ -5,3 +5,4 @@ File *be.py* -> Without graphic interface, everything is print in the console. N
 
 File *graphic.py* -> With graphic interface. Click `Update` to go to next step.
 
+Project made with [ncywieecl](https://github.com/ncywieecl).
